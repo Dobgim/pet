@@ -9,7 +9,7 @@
     "start": "npx serve ."
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "keywords": [],
   "author": "",
