@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Puppy | Little Paws Boutique</title>
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .track-section {
+      padding: 120px 0 60px;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .search-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .search-container h2 {
+      font-family: var(--font-display);
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .result-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      max-width: 800px;
+      width: 100%;
+      display: none; /* Hidden until search results found */
+      gap: 2rem;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .result-image {
+      flex: 1;
+      max-width: 350px;
+    }
+
+    .result-image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .result-info {
+      flex: 1.5;
+    }
+
+    .info-group {
+      margin-bottom: 1.2rem;
+      border-bottom: 1px dashed var(--border-color);
+      padding-bottom: 0.8rem;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #777;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-value {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .result-container {
+        flex-direction: column;
+      }
+      .result-image {
+        max-width: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.jpg" alt="Logo" class="logo-icon-img">
+        Little Paws
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="puppies.html">Puppies</a>
+        <a href="adoption.html">Adoption Process</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="track.html" class="active">Track Puppy</a>
+      </div>
+
+      <button class="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <section class="track-section">
+    <div class="container">
+      <div class="search-container">
+        <h2><i class="fas fa-search-location"></i> Puppy Tracking</h2>
+        <p>Enter your puppy's <strong>name</strong> or <strong>tracking code</strong> to see its details.</p>
+        
+        <div class="search-box">
+          <input type="text" id="search_code" placeholder="e.g. Luna or TRK123456">
+          <button class="btn btn-primary" onclick="searchPuppy()">Track</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="result_container" class="result-container">
+        <div class="result-image">
+          <img id="image" src="" alt="Puppy Image">
+        </div>
+        <div class="result-info">
+          <h3 id="puppy_name" style="font-family: var(--font-display); color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;">-</h3>
+          <div class="info-group">
+            <div class="info-label">Breed</div>
+            <div class="info-value" id="breed">-</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Age</div>
+            <div class="info-value" id="age">-</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Gender</div>
+            <div class="info-value" id="gender">-</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Price</div>
+            <div class="info-value" id="price">-</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Tracking Code</div>
+            <div class="info-value" id="tracking_display" style="color: var(--secondary-color);">-</div>
+          </div>
+          <a href="adoption.html" class="btn btn-primary" style="margin-top: 1rem;"><i class="fas fa-heart"></i> Start Adoption</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Little Paws Boutique. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase Backend -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js?v=3"></script>
+  <script src="js/track.js?v=3"></script>
+  <script src="js/main.js?v=2"></script>
+  <!-- Chatway Live Chat -->
+  <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=Rx21QDQYjBIG"></script>
+
+</body>
+</html>

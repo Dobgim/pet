@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find your dream fluffy friend at Little Paws Boutique. Premium breeds including Pomeranian, Golden Doodle, French Bulldogs, and more.">
+  <title>Little Paws Boutique | Home</title>
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Hero Section Specific Styles */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      margin-bottom: 1.5rem;
+      animation: slideUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: slideUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s forwards;
+    }
+
+    .hero-buttons {
+      opacity: 0;
+      animation: slideUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.6s forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Breeds Showcase */
+    .breeds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .breed-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .breed-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .breed-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .breed-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .breed-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .breed-content h3 {
+      font-family: var(--font-display);
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials-bg {
+      background-color: var(--bg-secondary);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .review-card {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\f10d';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: var(--border-color);
+      opacity: 0.5;
+    }
+
+    .review-stars {
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+    }
+
+    .reviewer-info img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .reviewer-info h5 {
+      margin: 0;
+      color: var(--text-dark);
+    }
+    
+    .reviewer-info span {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* Payments & Trust */
+    .trust-section {
+      text-align: center;
+      padding: 4rem 0;
+    }
+    
+    .payment-icons {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .payment-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: #666;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .payment-icon:hover {
+      transform: scale(1.1);
+      color: var(--primary-color);
+    }
+    
+    .payment-icon img {
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .payment-icon i {
+      font-size: 2.5rem;
+    }
+
+    /* Trust Badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+      color: var(--primary-color);
+      border: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.jpg" alt="Logo" class="logo-icon-img">
+        Little Paws
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="puppies.html">Puppies</a>
+        <a href="adoption.html">Adoption Process</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="track.html">Track Puppy</a>
+      </div>
+
+      <button class="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <img src="assets/hero-bg.png" alt="Cute Puppies" class="hero-bg" id="heroBgImage">
+    <div class="hero-overlay"></div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <h1>Find Your Fluffy Best Friend</h1>
+        <p>Welcome to Little Paws Boutique! We offer premium, well-socialized breeds raised with love and care. Your perfect companion is waiting for you.</p>
+        <div class="hero-buttons">
+          <a href="puppies.html" class="btn btn-primary"><i class="fas fa-heart"></i> View Puppies</a>
+          <a href="contact.html" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUST BADGES MINI SECTION -->
+  <section class="container pb-0">
+    <div class="trust-badges fade-in">
+      <div class="badge"><i class="fas fa-award"></i> Certified Breeder</div>
+      <div class="badge"><i class="fas fa-check-circle"></i> Health Guaranteed</div>
+      <div class="badge"><i class="fas fa-heart"></i> Family Raised</div>
+    </div>
+  </section>
+
+  <!-- BREEDS SHOWCASE -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-2 fade-in">
+        <h2>Breeds We Adore</h2>
+        <p>Explore our most popular and lovable furry friends. Which one steals your heart?</p>
+      </div>
+
+      <div class="breeds-grid">
+        <!-- Breed 1 -->
+        <div class="breed-card fade-in">
+          <img src="assets/pomeranian.jpg" alt="Pomeranian">
+          <div class="breed-content">
+            <h3>Pomeranian</h3>
+            <p>Tiny, fluffy, and fiercely loyal. The perfect little companion.</p>
+          </div>
+        </div>
+        <!-- Breed 2 -->
+        <div class="breed-card fade-in">
+          <img src="assets/goldendoodle.jpg" alt="Golden Doodle">
+          <div class="breed-content">
+            <h3>Golden Doodle</h3>
+            <p>Smart, affectionate, and low-shedding. Great for families.</p>
+          </div>
+        </div>
+        <!-- Breed 3 -->
+        <div class="breed-card fade-in">
+          <img src="assets/frenchie.jpg" alt="French Bulldog">
+          <div class="breed-content">
+            <h3>French Bulldog</h3>
+            <p>Playful, alert, and completely irresistible with those bat ears.</p>
+          </div>
+        </div>
+        <div class="breed-card fade-in">
+          <img src="assets/shihtzu.jpg" alt="Shih Tzu">
+          <div class="breed-content">
+            <h3>Shih Tzu</h3>
+            <p>Lively, sweet-tempered dogs with gorgeous flowing coats.</p>
+          </div>
+        </div>
+        <div class="breed-card fade-in">
+          <img src="assets/cavapoo.jpg" alt="Cavapoo">
+          <div class="breed-content">
+            <h3>Cavapoo</h3>
+            <p>Gentle and eager-to-please, blending the best of both parent breeds.</p>
+          </div>
+        </div>
+        <div class="breed-card fade-in">
+          <img src="assets/yorkie.jpg" alt="Yorkshire Terrier">
+          <div class="breed-content">
+            <h3>Yorkshire Terrier</h3>
+            <p>Feisty, brave, and glamorous all wrapped into a tiny package.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-2 fade-in">
+        <a href="puppies.html" class="btn btn-primary mt-2">See All Breeds & Available Puppies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-bg">
+    <div class="container">
+      <div class="text-center mb-2 fade-in">
+        <h2>Happy Families</h2>
+        <p>Don't just take our word for it. See what our forever families have to say!</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Getting our little Pom from Little Paws Boutique was the best decision! The communication was amazing and our puppy is perfectly healthy."</p>
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=Sarah+Jen&background=random" alt="Sarah J.">
+            <div>
+              <h5>Sarah J.</h5>
+              <span>Pomeranian Mom</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Top tier breeder! They walked us through everything and the transition was seamless. We love our Frenchie so much."</p>
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=Michael+T&background=random" alt="Michael T.">
+            <div>
+              <h5>Michael T.</h5>
+              <span>French Bulldog Dad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Beautiful puppies raised in a wonderful home environment. Highly recommend Little Paws Boutique to anyone looking for a new furry addition."</p>
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=Emma+L&background=random" alt="Emma L.">
+            <div>
+              <h5>Emma L.</h5>
+              <span>Golden Doodle Mom</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"I couldn't be happier. Professionalism at its finest, plus my Yorkie is absolutely adorable and almost potty trained!"</p>
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=David+R&background=random" alt="David R.">
+            <div>
+              <h5>David R.</h5>
+              <span>Yorkshire Terrier Dad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"They truly care about where their puppies go. I appreciated the thorough vetting process. Our Cavapoo is the sweetest."</p>
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=Jessica+M&background=random" alt="Jessica M.">
+            <div>
+              <h5>Jessica M.</h5>
+              <span>Cavapoo Mom</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Absolutely adore my Shih Tzu. Little Paws Boutique provided all paperwork, vet checks, and everything we needed day one."</p>
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=Amanda+K&background=random" alt="Amanda K.">
+            <div>
+              <h5>Amanda K.</h5>
+              <span>Shih Tzu Mom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT METHODS -->
+  <section class="trust-section">
+    <div class="container fade-in">
+      <h2>Secure & Convenient Payment</h2>
+      <p>We accept the following methods to make reserving your puppy seamless.</p>
+      
+      <div class="payment-icons">
+        <div class="payment-icon">
+          <i class="fa-brands fa-cc-stripe" style="color: #635bff;"></i>
+          <span>Cashapp</span>
+        </div>
+        <div class="payment-icon">
+          <i class="fa-brands fa-alipay" style="color: #25a400;"></i>
+          <span>Chime</span>
+        </div>
+        <div class="payment-icon">
+          <i class="fa-solid fa-money-bill-transfer" style="color: #652a9e;"></i>
+          <span>Zelle</span>
+        </div>
+      </div>
+      <p class="mt-2" style="font-size: 0.9rem;"><i>Payments are secured. Please reach out during adoption to receive payment handles.</i></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4><i class="fas fa-paw"></i> Little Paws Boutique</h4>
+          <p>Finding the perfect family for every puppy. We breed with love, care, and utmost responsibility.</p>
+          <div class="social-links">
+            <a href="https://v.lemon8-app.com/s/OgwdMSMYys" target="_blank" class="social-link" title="Lemon8"><i class="fas fa-lemon"></i></a>
+            <a href="https://www.tiktok.com/@tiny_paws_boutique?_r=1&_t=ZT-94nzRxABrbR" target="_blank" class="social-link" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="puppies.html">Available Puppies</a>
+            <a href="adoption.html">Adoption Process</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="track.html">Track Puppy</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <div class="footer-links">
+            <a href="mailto:contact@littlepawsboutique.com"><i class="fas fa-envelope"></i> contact@littlepawsboutique.com</a>
+            <a href="tel:+12763068569"><i class="fas fa-phone"></i> +1(276) 306-8569</a>
+            <a href="contact.html"><i class="fas fa-map-marker-alt"></i> 5043 Tuttle Grossing Blvd, Dublin, OH 43016</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Little Paws Boutique. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/12763068569" target="_blank" style="position: fixed; bottom: 30px; left: 30px; background-color: #25D366; border-radius: 50%; width: 60px; height: 60px; z-index: 2000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); text-decoration: none;">
+    <i class="fa-brands fa-whatsapp" style="color: white; font-size: 35px; line-height: 1;"></i>
+  </a>
+
+  <!-- Chatway Live Chat -->
+  <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=Rx21QDQYjBIG"></script>
+
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+  <!-- Chatway Live Chat -->
+  <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=Rx21QDQYjBIG"></script>
+</body>
+</html>

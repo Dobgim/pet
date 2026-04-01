@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adoption Process | Little Paws Boutique</title>
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .page-header {
+      padding: 120px 0 60px;
+      background-color: var(--bg-secondary);
+      text-align: center;
+    }
+
+    .process-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background-color: var(--border-color);
+      transform: translateX(-50%);
+    }
+
+    .step {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      position: relative;
+      width: 100%;
+    }
+
+    .step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .step-content {
+      width: 45%;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .step-content:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 0 0 8px var(--bg-light);
+      z-index: 1;
+    }
+
+    .step-content h3 {
+      font-family: var(--font-display);
+      color: var(--primary-color);
+    }
+
+    .step-number {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .cta-banner h2 {
+      color: white;
+    }
+    
+    .cta-banner .btn {
+      background: white;
+      color: var(--primary-color);
+      margin-top: 1.5rem;
+    }
+
+    .cta-banner .btn:hover {
+      background: var(--bg-secondary);
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .process-timeline::before {
+        left: 30px;
+      }
+      .step {
+        flex-direction: column !important;
+        align-items: flex-end;
+      }
+      .step-icon {
+        left: 30px;
+        transform: translate(-50%, -50%);
+      }
+      .step-content {
+        width: calc(100% - 80px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.jpg" alt="Logo" class="logo-icon-img">
+        Little Paws
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="puppies.html">Puppies</a>
+        <a href="adoption.html" class="active">Adoption Process</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="track.html">Track Puppy</a>
+      </div>
+
+      <button class="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container fade-in">
+      <h1>Adoption Process</h1>
+      <p>Bringing a puppy home is a big step. We've made our process simple, transparent, and exciting!</p>
+    </div>
+  </header>
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="process-timeline">
+        
+        <!-- STEP 1 -->
+        <div class="step fade-in">
+          <div class="step-content">
+            <span class="step-number">Step 01</span>
+            <h3>Find Your Perfect Puppy</h3>
+            <p>Browse our gallery of available puppies. Filter by breed, gender, or price to find the furry friend that melts your heart.</p>
+            <a href="puppies.html" style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">View Gallery <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="step-icon"><i class="fas fa-search"></i></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step fade-in">
+          <div class="step-content">
+            <span class="step-number">Step 02</span>
+            <h3>Q&A & Lifestyle Match</h3>
+            <p>Once you've chosen a puppy, we will have a brief consultation. We'll ask about your family lifestyle, living conditions, and experience with dogs to ensure it's a perfect match.</p>
+          </div>
+          <div class="step-icon"><i class="fas fa-comments"></i></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step fade-in">
+          <div class="step-content">
+            <span class="step-number">Step 03</span>
+            <h3>Discuss Pickup/Delivery</h3>
+            <p>We'll arrange how you'll get your puppy. You can pick them up directly from our home, or we can discuss safe, trusted delivery options via a pet nanny if you are located out of state.</p>
+          </div>
+          <div class="step-icon"><i class="fas fa-car-side"></i></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step fade-in">
+          <div class="step-content">
+            <span class="step-number">Step 04</span>
+            <h3>Ownership Transfer & Prep</h3>
+            <p>We'll handle the upfront requirements. You'll sign the ownership transfer documents, review the vet records, and receive our puppy starter guide to help you prep their new home!</p>
+          </div>
+          <div class="step-icon"><i class="fas fa-home"></i></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+      </div>
+
+      <!-- BANNER CTA -->
+      <div class="cta-banner fade-in">
+        <h2>Ready to Start?</h2>
+        <p style="color: white; opacity: 0.9; max-width: 600px; margin: 0 auto;">Our team is here to walk you through every step. Let's make your dream of an adorable puppy a reality.</p>
+        <a href="contact.html" class="btn"><i class="fas fa-envelope"></i> Contact Us Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4><i class="fas fa-paw"></i> Little Paws Boutique</h4>
+          <p>Finding the perfect family for every puppy. We breed with love, care, and utmost responsibility.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="puppies.html">Available Puppies</a>
+            <a href="adoption.html">Adoption Process</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="track.html">Track Puppy</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <div class="footer-links">
+            <a href="mailto:contact@littlepawsboutique.com"><i class="fas fa-envelope"></i> contact@littlepawsboutique.com</a>
+            <a href="tel:+12763068569"><i class="fas fa-phone"></i> +1(276) 306-8569</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Little Paws Boutique. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/12763068569" target="_blank" style="position: fixed; bottom: 30px; left: 30px; background-color: #25D366; border-radius: 50%; width: 60px; height: 60px; z-index: 2000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); text-decoration: none;">
+    <i class="fa-brands fa-whatsapp" style="color: white; font-size: 35px; line-height: 1;"></i>
+  </a>
+
+  <!-- Chatway Live Chat -->
+  <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=Rx21QDQYjBIG"></script>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

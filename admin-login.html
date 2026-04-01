@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Little Paws Boutique</title>
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      background-color: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background: white;
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-header {
+      margin-bottom: 2rem;
+    }
+
+    .login-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 3px solid var(--border-color);
+    }
+
+    .login-header h2 {
+      font-family: var(--font-display);
+      color: var(--primary-color);
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .login-header p {
+      color: #777;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+      background-color: #fcfcfc;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(247, 168, 184, 0.2);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .error-msg {
+      color: #e74c3c;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .error-msg.active {
+      display: block;
+      animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-header">
+      <img src="assets/logo.jpg" alt="Little Paws Logo">
+      <h2>Admin Portal</h2>
+      <p>Secure login for Little Paws Boutique</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" class="form-control" placeholder="Enter admin username" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-login">
+        <i class="fas fa-lock"></i> Secure Login
+      </button>
+
+      <div class="error-msg" id="errorMsg">
+        <i class="fas fa-exclamation-circle"></i> Invalid username or password.
+      </div>
+    </form>
+    
+    <div style="margin-top: 2rem; opacity: 0.7; font-size: 0.85rem;">
+      <p><i>Hint: admin / password123</i></p>
+      <a href="index.html" style="color: var(--primary-color); text-decoration: underline;"><i class="fas fa-arrow-left"></i> Back to Website</a>
+    </div>
+  </div>
+
+  <script src="js/admin-login.js"></script>
+</body>
+</html>

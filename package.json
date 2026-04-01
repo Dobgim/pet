@@ -1,0 +1,17 @@
+{
+  "name": "little-paws",
+  "version": "1.0.0",
+  "description": "Little Paws Static Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static HTML site.' && exit 0",
+    "start": "npx serve ."
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
